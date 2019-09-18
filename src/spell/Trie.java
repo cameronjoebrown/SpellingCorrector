@@ -1,23 +1,104 @@
 package spell;
 
+import java.util.Objects;
+import java.lang.*;
+
 public class Trie implements ITrie {
+    private int wordCount;
+    private int nodeCount;
+    private Node rootNode;
+    private char[] alphabet = {'a','b','c','d',
+            'e','f','g','h','i','j','k','l','m','n','o',
+            'p','q','r','s','t','u','v','w','x','y','z'};
+
+    public Trie() {
+        this.wordCount = 0;
+        this.nodeCount = 1;
+        rootNode = new Node();
+    }
+
+    private void incrementNodeCount() {
+        this.nodeCount++;
+    }
+
+    private void incrementWordCount() {
+        this.wordCount++;
+    }
+
+
     @Override
     public void add(String word) {
+        char temp;
+        int index = 0;
+        Node currentNode = rootNode;
+        for(int i = 0; i < word.length(); i++) {
+            temp = word.charAt(i);
+            for(int j = 0; j < alphabet.length; j++) {
+                if(Objects.equals(temp, alphabet[j])) {
+                    index = j;
+                }
+            }
+            if(currentNode.getNodes()[index] == null) {
+                Node newNode = new Node();
+                newNode.setNodeLetter(temp);
+                newNode.setParentNode(currentNode);
+                currentNode.getNodes()[index] = newNode;
+                incrementNodeCount();
+            }
+            currentNode = currentNode.getNodes()[index];
+        }
+        if(currentNode.getValue() == 0) {
+            incrementWordCount();
+        }
+        currentNode.incrementValue();
 
     }
 
     @Override
-    public INode find(String word) {
-        return null;
+    public Node find(String word) {
+        char temp;
+        int index = 0;
+        Node currentNode = rootNode;
+        for(int i = 0; i < word.length(); i++) {
+            temp = word.charAt(i);
+            for (int j = 0; j < alphabet.length; j++) {
+                if (Objects.equals(temp, alphabet[j])) {
+                    index = j;
+                }
+            }
+            if (currentNode.getNodes()[index] == null) {
+                break;
+            }
+        }
+        return currentNode;
     }
 
     @Override
     public int getWordCount() {
-        return 0;
+        return wordCount;
     }
 
     @Override
     public int getNodeCount() {
-        return 0;
+        return nodeCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trie trie = (Trie) o;
+        return wordCount == trie.wordCount &&
+                nodeCount == trie.nodeCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(wordCount, nodeCount);
+    }
+
+    @Override
+    public String toString() {
+        return null;
     }
 }

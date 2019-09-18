@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87447188-cf90-4f73-8f5c-30c9b02fe2b3" name="Default Changelist" comment="" />
+    <list default="true" id="87447188-cf90-4f73-8f5c-30c9b02fe2b3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spell/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpellingCorrector/spell/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellingCorrector/spell/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpellingCorrector/spell/SpellCorrector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellingCorrector/spell/SpellCorrector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpellingCorrector/spell/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellingCorrector/spell/Trie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spell/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spell/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spell/SpellCorrector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spell/SpellCorrector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spell/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spell/Trie.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +25,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1QnzYR33bzLuGU0VF749Y28womW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/jars/junit-platform-launcher-1.2.0.jar!/" />
@@ -99,11 +114,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568421195056</updated>
-      <workItem from="1568421197392" duration="788000" />
+      <workItem from="1568421197392" duration="17481000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
