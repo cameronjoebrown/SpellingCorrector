@@ -57,18 +57,41 @@ public class Trie implements ITrie {
 
     @Override
     public Node find(String word) {
-        char temp;
+        Node currentNode = findHelper(rootNode, word);
+        if(currentNode == null) {
+            return null;
+        }
+        else if(currentNode.getValue() > 0) {
+            return currentNode;
+        }
+        else {
+            return null;
+        }
+
+    }
+
+    private Node findHelper(Node currentNode, String str) {
+        char temp = 0;
+        if(str.length() >= 1) {
+           temp = str.charAt(0);
+        }
         int index = 0;
-        Node currentNode = rootNode;
-        for(int i = 0; i < word.length(); i++) {
-            temp = word.charAt(i);
-            for (int j = 0; j < alphabet.length; j++) {
-                if (Objects.equals(temp, alphabet[j])) {
-                    index = j;
-                }
+        for(int j = 0; j < alphabet.length; j++) {
+            if(Objects.equals(temp, alphabet[j])) {
+                index = j;
             }
-            if (currentNode.getNodes()[index] == null) {
-                break;
+        }
+        if(currentNode.getNodes()[index] == null) {
+            return null;
+        }
+        else if (Objects.equals(temp, currentNode.getNodes()[index].getNodeLetter())) {
+            currentNode = currentNode.getNodes()[index];
+            if (str.length() == 1) {
+                return currentNode;
+            }
+            else {
+                str = str.substring(1);
+                currentNode = findHelper(currentNode, str);
             }
         }
         return currentNode;
@@ -108,18 +131,26 @@ public class Trie implements ITrie {
         return myString.toString();
     }
 
-    public Node traverse(Node currentNode, StringBuilder strBuild) {
+    private StringBuilder traverse(Node currentNode, StringBuilder strBuild) {
         String word;
         if(currentNode == null) {
 
         }
-        else if(currentNode.getValue() > 0) {
-            word = currentNode.toString();
-            strBuild.append(word);
-            strBuild.append("\n");
-        }
+        else {
+            if(currentNode.getValue() > 0) {
+                word = currentNode.toString();
+                strBuild.append(word);
+                strBuild.append("\n");
+            }
+            for(int i = 0; i < currentNode.getNodes().length; i++) {
+                strBuild = traverse(currentNode.getNodes()[i], strBuild);
+            }
 
-        traverse()
+        }
         return strBuild;
+    }
+
+    public char[] getAlphabet() {
+        return alphabet;
     }
 }

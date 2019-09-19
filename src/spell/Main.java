@@ -23,7 +23,7 @@ public class Main {
 		SpellCorrector corrector = new SpellCorrector();
 		
 		corrector.useDictionary(dictionaryFileName);
-		String suggestion = corrector.suggestSimilarWord(inputWord);
+		String suggestion = corrector.suggestSimilarWord(inputWord.toLowerCase());
 		if (suggestion == null) {
 		    suggestion = "No similar word found";
 		}

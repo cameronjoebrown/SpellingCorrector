@@ -12,6 +12,7 @@ public class Node implements INode {
     public Node() {
         this.nodes = new Node[26];
         this.value = 0;
+        this.parentNode = null;
     }
 
     @Override
