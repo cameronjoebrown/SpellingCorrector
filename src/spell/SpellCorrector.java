@@ -139,40 +139,64 @@ public class SpellCorrector implements ISpellCorrector {
 
 
     private Node alphabetOrder(Node currentNode, Node compare) {
+        String current = currentNode.toString();
+        String compared = current.toString();
+        int currentVal = 0;
+        int compareVal = 0;
+        if(current.length() > compared.length()) {
+            for(int i = 0; i < compared.length(); i++) {
+                currentVal += current.charAt(i);
+                compared += compared.charAt(i);
+            }
+        }
+        else if(current.length() < compared.length()) {
+            for(int i = 0; i < current.length(); i++) {
 
-        int difference = currentNode.toString().compareTo(compare.toString());
-        if (difference < 0) {
-            return currentNode;
-        } else if (difference > 0) {
-            return compare;
-        } else {
-            return null;
+            }
+        }
+        else {
+            for(int i = 0; i < compared.length(); i++) {
+
+            }
         }
 
+        if(currentVal > compareVal) {
+            return compare;
+        }
+        else if(currentVal < compareVal) {
+            return currentNode;
+        }
+        else {
+            if(current.length() > compared.length()) {
+                return compare;
+            }
+            else if(current.length() < compared.length()) {
+                return currentNode;
+            }
+
+        }
+        return currentNode;
     }
 
     private String bestSuggestion(ArrayList<String> list) {
         Node temp1 = null;
         Node temp2 = null;
         if (list.size() > 1) {
-            for (int i = 0; i < list.size(); i++) {
-                if (i == list.size() - 1) {
-                    break;
-                }
-                temp1 = myTrie.find(list.get(i));
-                temp2 = myTrie.find(list.get(i + 1));
+            while(list.size() > 1) {
+                temp1 = myTrie.find(list.get(0));
+                temp2 = myTrie.find(list.get(1));
                 if (temp1.equals(temp2)) {
-                    list.remove(i);
+                    list.remove(0);
                 } else if (temp1.getValue() > temp2.getValue()) {
-                    list.remove(i + 1);
+                    list.remove(1);
                 } else if (temp1.getValue() < temp2.getValue()) {
-                    list.remove(i);
+                    list.remove(0);
                 } else if (temp1.getValue() == temp2.getValue()) {
                     Node first = alphabetOrder(temp1, temp2);
                     if (first.equals(temp1)) {
-                        list.remove(i + 1);
+                        list.remove( 1);
                     } else {
-                        list.remove(i);
+                        list.remove(0);
                     }
                 }
 
