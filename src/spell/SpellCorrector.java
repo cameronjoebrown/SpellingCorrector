@@ -24,18 +24,13 @@ public class SpellCorrector implements ISpellCorrector {
     @Override
     public String suggestSimilarWord(String inputWord) {
         Node suggestionNode = myTrie.find(inputWord);
-        StringBuilder str = new StringBuilder();
+        String suggestion;
         if(suggestionNode == null) {
-
             return null;
         }
         else {
-            while(suggestionNode.getParentNode() != null) {
-                str.append(suggestionNode.getNodeLetter());
-                suggestionNode = suggestionNode.getParentNode();
-            }
-            str.reverse();
-            return str.toString();
+            suggestion = suggestionNode.toString();
+            return suggestion;
         }
 
     }

@@ -1,5 +1,8 @@
 package spell;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Node implements INode {
     private int value;
     private Node parentNode;
@@ -9,13 +12,6 @@ public class Node implements INode {
     public Node() {
         this.nodes = new Node[26];
         this.value = 0;
-    }
-
-    public Node(char letter, int value, Node parent) {
-        this.nodeLetter = letter;
-        this.value = value;
-        this.nodes = new Node[26];
-        this.parentNode = parent;
     }
 
     @Override
@@ -33,6 +29,34 @@ public class Node implements INode {
 
     public void setParentNode(Node parentNode) {
         this.parentNode = parentNode;
+    }
+
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        Node currentNode = this;
+        while(currentNode.getParentNode() != null) {
+            str.append(currentNode.getNodeLetter());
+            currentNode = currentNode.getParentNode();
+        }
+        str.reverse();
+        return str.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node node = (Node) o;
+        return value == node.value &&
+                nodeLetter == node.nodeLetter &&
+                Arrays.equals(nodes, node.nodes);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(value, nodeLetter);
+        result = 31 * result + Arrays.hashCode(nodes);
+        return result;
     }
 
     public Node[] getNodes() {

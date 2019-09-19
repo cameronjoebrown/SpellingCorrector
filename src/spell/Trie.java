@@ -1,5 +1,6 @@
 package spell;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.lang.*;
 
@@ -89,16 +90,36 @@ public class Trie implements ITrie {
         if (o == null || getClass() != o.getClass()) return false;
         Trie trie = (Trie) o;
         return wordCount == trie.wordCount &&
-                nodeCount == trie.nodeCount;
+                nodeCount == trie.nodeCount &&
+                Objects.equals(rootNode, trie.rootNode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(wordCount, nodeCount);
+        int result = Objects.hash(wordCount, nodeCount);
+        result = 31 * result + Arrays.hashCode(rootNode.getNodes());
+        return result;
     }
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder myString = new StringBuilder();
+        myString = traverse(rootNode, myString);
+        return myString.toString();
+    }
+
+    public Node traverse(Node currentNode, StringBuilder strBuild) {
+        String word;
+        if(currentNode == null) {
+
+        }
+        else if(currentNode.getValue() > 0) {
+            word = currentNode.toString();
+            strBuild.append(word);
+            strBuild.append("\n");
+        }
+
+        traverse()
+        return strBuild;
     }
 }
